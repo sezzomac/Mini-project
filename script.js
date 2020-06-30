@@ -5,6 +5,7 @@ var newImage = null;
 var borImage = null;
 var canvasImage = null;
 
+//canvas starting text--
 var ctx = canvas1.getContext("2d");
 ctx.font = "13px Arial";
 ctx.fillStyle = "#A7ADB2";
