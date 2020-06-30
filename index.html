@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quantico:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@700&display=swap" rel="stylesheet">
+    <title>MiniProject</title>
+</head>
+<body>
+<div class="container">
+	<div id="column">
+	<div class="header">
+		<h1 class="gradient-text">Apply Filters to an Image</h1>
+	</div>
+
+	<div id="can">
+		<canvas id="canvas" class=""></canvas>
+	</div>
+
+	<div id="imageoptions">
+	<table>
+		<tr>
+			<td>
+				<h2>Load Your Image</h2>
+				<input type="file" multiple="false" id="imageFile" accept="image/*" onchange="loadImage()">
+			</td>
+			<td>
+				<h2>Reset Image</h2>
+				<input type="button" value="Reset Image" id="resetimage" onclick="resetImage()">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<h2>Choose a Filter</h2>
+				<input type="button" value="Greyscale" onclick="greyScale()">
+				<input type="button" value="Sepia" onclick="sepiaFilter()">
+				<input type="button" value="Rainbow" onclick="rainBow()">
+				<input type="button" value="Red" onclick="red()">
+			</td>
+			<td>
+				<h2>Add a Border</h2>
+				<label for="borderInput">Size:&nbsp</label> 
+				<input type="number" min="1" max="100" id="borderInput">
+				<input type="button" value="Add Border" onclick="border()">
+			</td>
+		</tr>
+	</table>
+</div>
+</div>
+</div>
+  <script src="script.js"></script>
+  <script src="simpleimage.js"></script>
+  </body>
