@@ -27,7 +27,8 @@ function resetImage() {
 	}
 } 
 		//Uploading, checking, reseting functions finish--
-//Grey functions start---
+
+//Grey functions start--
 function makeGrey() {
 		newImage = new SimpleImage(upImage);
 	    for ( var pxl of newImage.values()) {
@@ -36,6 +37,7 @@ function makeGrey() {
         pxl.setGreen(avg);
         pxl.setBlue(avg);
     	}
+    	return avg;
     	return newImage;
 }
 function greyScale() {
@@ -44,8 +46,9 @@ function greyScale() {
 		newImage.drawTo(canvas1);
 	}
 }
-		//Grey functions finish---
-//Sepia functions start---
+		//Grey functions finish--
+
+//Sepia functions start--
 function makeSepia() {
 		newImage = new SimpleImage(upImage);
 		for ( var pxl of newImage.values()) {
@@ -62,23 +65,76 @@ function sepiaFilter() {
   		newImage.drawTo(canvas1);
 	}
 }
-		//Sepia functions finish---
-//Rainbow functions start---
+		//Sepia functions finish--
+
+//Rainbow functions start--
 function makeRainbow() {
 	newImage = new SimpleImage(upImage);
 	for (var pxl of newImage.values()) {
+	var avg = (pxl.getRed()+pxl.getGreen()+pxl.getBlue())/3;
 	var h = pxl.getY();
 	var gh = upImage.getHeight();
-      if (h <= gh/4){
-        pxl.setRed(255);
-    } if (h >= gh/4 && h <= gh/2) {
-            pxl.setRed(255);
-            pxl.setGreen(255);
-    } if (h >= gh/2 && h <= (gh/4)*3) {
-    	pxl.setGreen(255);
-    } if (h >= (gh/4)*3) {
-            pxl.setBlue(255);
-        }
+		if (h < gh/7) {
+			if (avg < 128) {			//red
+			pxl.setRed(avg*2)
+			} if (avg >= 128) {
+				pxl.setRed(255);
+				pxl.setGreen(2*avg-255);
+				pxl.setBlue(2*avg-255);
+			}
+		} if (h >= gh/7 && h < (gh/7)*2) {
+			if (avg < 128) {			//orange
+			pxl.setRed(avg*2);
+			pxl.setGreen(0.8*avg);
+			} if (avg >= 128) {
+				pxl.setRed(255);
+				pxl.setGreen(1.2*avg-51);
+				pxl.setBlue(2*avg-255);
+			}
+		} if (h >= (gh/7)*2 && h < (gh/7)*3) {
+			if (avg < 128){				//yellow
+				pxl.setRed(avg*2);
+				pxl.setGreen(avg*2);
+			} if (avg >= 128) {
+				pxl.setRed(255);
+				pxl.setGreen(255);
+				pxl.setBlue(2*avg-255);
+			}
+		} if (h >= (gh/7)*3 && h < (gh/7)*4) {
+			if (avg < 128){				//green
+				pxl.setGreen(avg*2);
+			} if (avg >= 128) {
+				pxl.setRed(2*avg-255);
+				pxl.setGreen(255);
+				pxl.setBlue(2*avg-255);
+			}
+		} if (h >= (gh/7)*4 && h < (gh/7)*5) {
+			if (avg < 128){				//blue
+				pxl.setBlue(avg*2);
+			} if (avg >= 128) {
+				pxl.setRed(2*avg-255);
+				pxl.setGreen(2*avg-255);
+				pxl.setBlue(255);
+			}
+		} if (h >= (gh/7)*5 && h < (gh/7)*6) {
+			if (avg < 128){				//indigo
+				pxl.setRed(0.8*avg);
+				pxl.setBlue(avg*2);
+			} if (avg >= 128) {
+				pxl.setRed(1.2*avg-51);
+				pxl.setGreen(2*avg-255);
+				pxl.setBlue(255);
+			}
+		} if (h >= (gh/7)*6) {
+			if (avg < 128){				//violet
+				pxl.setRed(1.6*avg);
+				pxl.setBlue(1.6*avg);
+			} if (avg >= 128) {
+				pxl.setRed(0.4*avg+153);
+				pxl.setGreen(2*avg-255);
+				pxl.setBlue(0.4*avg+153);
+			}
+		} 
 	}
 	return newImage;
 }
@@ -88,7 +144,8 @@ function rainBow() {
 		newImage.drawTo(canvas1);
 		}
 }
-		//Rainbow functions finish---
+		//Rainbow functions finish--
+
 //Red functions start--
 function makeRed(){
 	newImage = new SimpleImage(upImage);
@@ -107,6 +164,7 @@ function red() {
 		}
 }
 		//Red functions finish--
+
 //Border functions start--
 function setBlack(x) {
    x.setRed(0);
