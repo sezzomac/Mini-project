@@ -8,7 +8,7 @@ var canvasImage = null;
 var ctx = canvas1.getContext("2d");
 ctx.font = "13px Arial";
 ctx.fillStyle = "#A7ADB2";
-ctx.fillText("Image will display here", 80, 60);
+ctx.fillText("Image will be displayed here", 70, 60);
 
 //Uploading, checking, reseting functions start--
 function loadImage() {
